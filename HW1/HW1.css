@@ -8,6 +8,7 @@ body{
 }
 
 header{
+	padding-top: 20px;
 	grid-column: 1/13;
 	height: 80px;
 	color: red;
@@ -16,6 +17,7 @@ header{
 	font-size: 20px;
 }
 nav{
+	padding-top: 20px;
 	grid-column: 1/13;
 	height: 80px;
 	color: red;
@@ -23,6 +25,8 @@ nav{
 	text-align: center;
 }
 section{
+	padding-top: 20px;
+	color: white;
 	grid-column: 1/8;
 	background-color: black;
 	text-align: center;
@@ -37,12 +41,14 @@ article{
 }
 
 aside{
+	padding-top: 20px;
 	grid-column: 8/13;
 	background-color: black;
 	color: white;
 	text-align: center;
 }
 footer{
+	padding-top: 20px;
 	grid-column: 1/13;
 	background-color: black;
 	color: white;
@@ -52,13 +58,24 @@ footer{
 
 h1{
 	color: white;
+	border:solid;
+	border-width: 2px;
+	border-color: white;
+	font-size: 28px;
+	margin: 20px auto 10px auto;
 }
-h2{
-	color: white;
-}
-h3{
-	color: white;
-}
+
 p{
 	color: white;
+	border:solid;
+	border-width: 2px;
+	border-color: white;
+    margin-top: 0px;
 }
+.white{
+	color:white;
+}
+
+
+
+
