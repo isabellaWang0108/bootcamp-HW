@@ -18,7 +18,6 @@ header{
 }
 nav{
 	padding-top: 20px;
-
 	grid-column: 1/13;
 	height: 80px;
 	color: red;
@@ -31,17 +30,23 @@ nav{
 	margin: 0vw 2vw 1vw 2vw;
 
 }
+
 section{
 	padding-top: 20px;
-	color: white;
+	color: black;
     grid-column: 1/13;
-	text-align: center;
+	text-align: left;
 	display: inline;
 }
  
  .img{
  	width: 100%;
 
+ }
+
+ .home{
+ 	margin: 1vw 4vw 1vw 10vw;
+ 	max-width: 40em;
  }
 
 footer{
@@ -69,11 +74,54 @@ footer{
 	color:white;
 }
 
+#contact-form{
+	grid-column: 2/10;
+	max-width: 600px;
+}
 
+#message{
+	height:200px;
+}
+
+li{
+	list-style: none;
+	padding: 10px 0 10px 0;
+}
+textarea, #name, #email{
+	width:90%;
+}
+#submit{
+	margin-left: 40px;
+}
+section .img{
+	float: left;
+	width: 20em;
+	margin-right: 14px;
+    margin-top: 10px;
+}
 @media only screen and (max-width: 630px) {
 
 	.project{
 		width:90%;
 		text-align: center;
 	}
+    #contact-form{
+	grid-column: 1/13;
+	max-width: 600px;
+    }
+    .home{
+ 	margin: 1vw 4vw 1vw 4vw;
+    }
+    textarea, #name, #email{
+	width:90%;
 }
+section .img{
+	float: left;
+	width: 100%;
+    margin-top: 10px;
+}
+}
+
+
+
+
