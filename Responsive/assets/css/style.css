@@ -215,7 +215,7 @@ input[type=submit] {
   border: 0 none;
 }
 
-@media only screen and (max-width: 980px) {
+@media  screen and (max-width: 980px) {
 
 .main-section{
   width:80%;
@@ -226,7 +226,7 @@ li{
 }
 
 
-@media only screen and (max-width: 760px) {
+@media  screen and (max-width: 760px) {
 .main-section{
   width:100%;
 }
@@ -236,7 +236,7 @@ nav{
 
 }
 
-@media only screen and (max-width: 640px) {
+@media  screen and (max-width: 640px) {
 
 #logo{
   width:100%;
