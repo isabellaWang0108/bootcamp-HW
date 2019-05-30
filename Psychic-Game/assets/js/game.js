@@ -28,8 +28,7 @@ document.addEventListener("keydown", function(){
   
 
 
-   document.getElementById("wins").innerHTML = "Wins: "+ win;
-
+ 
 // all words in the game
    var color=["green","red","purple","blue","brown","grey","pink","yellow","white"];
    var words=color[z]; 
@@ -62,10 +61,10 @@ document.addEventListener("keydown", function(){
  		arrayInput=[];
  		win +=1;
  		z += 1 ;
-
  	// get color change when it's document
  		document.getElementById("color").style.background = words;
     } 
+
 // reset background color
 	if(arrayInput.length===1){
 		document.getElementById("color").style.background = "white";
@@ -84,9 +83,7 @@ document.addEventListener("keydown", function(){
     
 
 
-
-
-//    * As the user guesses the correct letters, reveal them: `m a d o _  _ a`.
+  document.getElementById("wins").innerHTML = "Wins: "+ win;
 
 //  Number of Guesses Remaining: (# of guesses remaining for the user).
 	var remain= 10-arrayInput.length ;
