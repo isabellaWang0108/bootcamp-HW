@@ -15,15 +15,17 @@ document.addEventListener("keydown", function(){
    var key=event.key;
 
   // arrey of user input
-  
-   if(code>=65 && code<=90){
-   	arrayInput.push(key);
+
+   if(code>=65 && code<=90 && !arrayInput.includes(key.toUpperCase())){
+
+   	arrayInput.push(key.toUpperCase());
+
    }
    else{
    	return 1;
    }
-
-  //  Wins: (# of times user guessed the word correctly).
+    
+  
 
 
    document.getElementById("wins").innerHTML = "Wins: "+ win;
@@ -47,8 +49,8 @@ document.addEventListener("keydown", function(){
  // else display  `_ `.
 			 var inputLetter=arrayInput[j];
 
-			 if(inputLetter==letter){	
-   			  	output.splice(i,1,inputLetter)
+			 if(inputLetter.toLowerCase()==letter){	
+   			  	output.splice(i,1,inputLetter.toLowerCase())
    			  }
    			}
 
