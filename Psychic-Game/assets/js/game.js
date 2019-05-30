@@ -2,7 +2,10 @@
 
 
 //  Press any key to get started!
-var arrey=[];
+var arrayInput=[];
+var win=0;
+var z=0;
+
 document.addEventListener("keydown", function(){
   var code=event.which;
 
@@ -11,58 +14,84 @@ document.addEventListener("keydown", function(){
    document.getElementById("section").style.display = "block";
    var key=event.key;
 
-  // make sure the input values are only letters
+  // arrey of user input
   
    if(code>=65 && code<=90){
-   	arrey.push(key);
+   	arrayInput.push(key);
    }
    else{
    	return 1;
    }
 
-//  Wins: (# of times user guessed the word correctly).
+  //  Wins: (# of times user guessed the word correctly).
 
-var win=0;
- document.getElementById("wins").innerHTML = "Wins: "+ win;
 
-//    If the word is `madonna`, display it like this when the game starts: `_ _ _ _ _ _ _`.
+   document.getElementById("wins").innerHTML = "Wins: "+ win;
 
 // all words in the game
-  var color=["green","red","purple"];
+   var color=["green","red","purple","blue","brown","grey","pink","yellow","white"];
+   var words=color[z]; 
 
-//specify which word according to wins
-  var i=win;
-  var words=color[i];  
-	     
-  var wordArrey=[];
+   var output=[];
 //all letters in words
-	  for(var j=0;j<words.length;j++){
-		  var letter=words[j];
-		  if(key==letter){
-		  	wordArrey.push(letter);
-		  }else{
-		  	wordArrey.push("_");
-		  }
+	  for(var i=0;i<words.length;i++){
+	     	
+		    var letter=words[i];
+		    output.push("_")
+// compare the wordArray with arrayInput
 
-	      
+   			for(var j=0;j<arrayInput.length;j++){
+
+   //   if the input contains the word's letter,
+ // display the word
+ // else display  `_ `.
+			 var inputLetter=arrayInput[j];
+
+			 if(inputLetter==letter){	
+   			  	output.splice(i,1,inputLetter)
+   			  }
+   			}
+
+
+   		}	  
+// one win when you fill out letters
+// move on to the next word if you win
+ 	if(!output.includes("_")){
+ 		arrayInput=[];
+ 		win +=1;
+ 		z += 1 ;
+
+ 	// get color change when it's document
+ 		document.getElementById("color").style.background = words;
+    } 
+// reset background color
+	if(arrayInput.length===1){
+		document.getElementById("color").style.background = "white";
+	}
+ // move on when you fail
+
+ 	if(arrayInput.length>=9){
+ 		z +=1 ;
+ 		arrayInput=[];
+
+	}
 
 // write word to document
- document.getElementById("currentWord").innerHTML = "word: " + wordArrey;
+ 	document.getElementById("currentWord").innerHTML = "word: " + output;
   
     
-}
+
 
 
 
 //    * As the user guesses the correct letters, reveal them: `m a d o _  _ a`.
 
 //  Number of Guesses Remaining: (# of guesses remaining for the user).
-var remain= 11-arrey.length ;
-document.getElementById("remain").innerHTML = "Number of Guesses Remaining: " + remain;
+	var remain= 10-arrayInput.length ;
+	document.getElementById("remain").innerHTML = "Number of Guesses Remaining: " + remain;
 
 //  Letters Already Guessed: (Letters the user has guessed, displayed like `L Z Y H`).
-var display=arrey
-document.getElementById("guessed").innerHTML = "Letters Already Guessed: " + arrey;
+	document.getElementById("guessed").innerHTML = "Letters Already Guessed: " + arrayInput;
 
 
 //  After the user wins/loses the game should automatically choose another word and make the user play it.
