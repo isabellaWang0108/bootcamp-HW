@@ -1,7 +1,81 @@
 // charactors
 // ###chose
-// chose anyone of them to be you
+// make an array of object
+var pokemon=[
+   {
+    name:"Pikachu",
+    link:"https://wangx733.github.io/bootcamp-HW/unit-4-game/image/1.png",
+    HP:"120"
+    },
 
+   {
+    name:"Bulbasaur",
+    link:"https://wangx733.github.io/bootcamp-HW/unit-4-game/image/2.png",
+    HP:"100"
+   },
+
+  {
+    name:"Mew",
+    link:"https://wangx733.github.io/bootcamp-HW/unit-4-game/image/3.png",
+    HP:"150"
+   },
+
+   {
+    name:"Eevee",
+    link:"https://wangx733.github.io/bootcamp-HW/unit-4-game/image/4.png",
+    HP:"180"
+   }
+];
+
+// chose anyone of them to be you
+$(document).ready(function() {
+
+ // append elements into the first section
+      for(var i=0; i<pokemon.length; i++){
+
+             var HP=$("<p>");
+             HP.text(pokemon[i].HP);
+
+            var animal=$("<h3>");
+             animal.attr("id","pokemon[i].name")
+                    .addClass("trigger")
+                   .text(pokemon[i].name)
+                   .append($('<img>',{src:pokemon[i].link}))
+                   .append(HP);
+
+             $("#pics").append(animal);
+    
+
+          
+
+
+            var chooseMe= animal.on("click", function(){
+               if($(".me").hasClass("check")){
+        // choose my enemy        
+                     $("#challenge").append(this);
+               }else{
+      // move my role to my place
+                    $(this).removeClass("trigger");
+                    $("#me").append(this);
+                    $(".me").addClass("check");
+      // move other roles to anemy place
+                    
+                    $("#pics").attr("id","enemies");
+                    }
+             });   
+
+    }
+// click to attack
+           
+      $("button").on("click", function(){
+
+        
+        console.log($("#me").html().p)
+      })
+
+
+
+});
 
 // choose anemy from the remaining three
 
