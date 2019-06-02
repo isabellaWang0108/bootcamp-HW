@@ -4,30 +4,65 @@ img{
 
 }
 #pics{
-	margin:50px 20px;
+	margin:40px 0px 20px 0px;
 }
-
+.title{
+	border:solid;
+	text-align: center;
+	width:600px;
+}
 body{
 	display: grid;
 	padding-left: 30px;
+	margin:30px 10px 10px 50px;
 }
 
-
+.red{
+	background-color: red;
+}
 
 #me{
 	position:absolute;
 	top:400px;
+	margin-bottom: 200px;
 }
 #challenge{
 	position:absolute;
 	top:400px;
 	left:400px;
 }
+
+#reminder{
+	position:absolute;
+	top:600px;
+	left:400px;
+}
+
 #button{
 	position:absolute;
 	top:500px;
 	left:250px;
+
 }
+.animation {
+  -webkit-animation:  animation 1s infinite; 
+  -moz-animation:  animation 1s infinite; 
+  -o-animation:  animation 1s infinite; 
+  animation: animation 1s infinite; 
+}
+
+@keyframes animation {
+  from {
+	color:red;
+	font-weight: bold;
+  }
+
+  to {
+	color:black;
+  }
+}
+
+
 h3{
 	float: left;
 	border: solid;
@@ -47,3 +82,22 @@ p{
    font-size: 16px;
    margin-top: 10px;
 }
+
+
+#gameOver{
+	font-size: 100px;
+	margin: 100px 100px 100px 100px;
+
+}
+
+#restart{
+	font-size: 50px;
+	margin-left:20px;
+}
+
+
+
+
+
+
+
