@@ -1,0 +1,31 @@
+.container{
+	display: block;
+	margin:50px 50px 50px 50px;
+	width:60vw;
+	border:solid;
+	border-width: 3px;
+}
+
+a{
+	font-size:30px;
+	display:block;
+	padding: 10px 10px 10px 10px;
+
+}
+a:hover{
+	opacity:.5;
+}
+#right{
+	color:green;
+}
+#wrong{
+	color:red;
+}
+#restart{
+	margin:70px 30px 30px 0px;
+}
+#time{
+	margin-left:70vw;
+	color:red;
+	font-size:50px;
+}
