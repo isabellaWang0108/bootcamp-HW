@@ -23,6 +23,9 @@ form{
 .img:hover{
 	opacity:.5;
 }
+.img:active {
+  opacity:1;
+}
 #key-input{
   background-color: black;
   border: solid;
