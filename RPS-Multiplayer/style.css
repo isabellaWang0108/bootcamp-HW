@@ -1,0 +1,89 @@
+body{
+    background-color: black;
+}
+#input{
+    margin:10px 0px 0px 30px;
+}
+button, #submit{
+    font-size: 30px;
+    color:white;
+    background-color: black;
+    border: solid;
+    cursor: pointer;
+    width:29vw;
+}
+button:hover{
+    opacity:.7;
+}
+#text{
+    width:80%;
+    font-size: 16px;
+}
+#submit{
+    font-size: 16px;
+    margin-left:10px;
+    width:12vw;
+}
+form{
+    margin: 20px 0 20px 0;
+    width:100%;
+}
+.win{
+    color:green;
+    font-size:30px;
+    position: absolute;
+    top:10px;
+    left:60%;
+}
+.lose{
+    color: red;
+    font-size:30px;
+    position: absolute;
+    top:10px;
+    left:40%;
+}
+#textbox{
+    border: none;
+    color:white;
+    height:240px;
+    overflow: scroll;
+    margin: 20px 0 20px 10px;
+}
+.you{
+    position: absolute;
+    top:50px;
+    left:20px;
+}
+.them{
+    position: absolute;
+    top:70px;
+    left:20px;
+}
+.you-lose{
+    position: absolute;
+    top:50px;
+    left:40%;
+}
+.they-lose{
+    position: absolute;
+    top:70px;
+    left:40%;
+}
+.you-win{
+    position: absolute;
+    top:50px;
+    left:60%;
+}
+.they-win{
+    position: absolute;
+    top:70px;
+    left:60%;
+}
+#status{
+    color:white;
+    height:80px;
+}
+.your-text{
+    color:white;
+    
+}

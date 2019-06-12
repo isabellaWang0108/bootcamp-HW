@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="UTF-8">
+  <title>RPC user2</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="status">
+        <div  class="win">win</div>
+        <div  class="lose">lose</div>
+        <div id="user1" class="them">you</div>
+        <div id="user2" class="you">another</div>
+        <div id="win-user1" class="they-win" >0</div>
+        <div id="lose-user1" class="they-lose"">0</div>
+        <div id="win-user2" class="you-win">10</div>
+        <div id="lose-user2" class="you-lose">10</div>
+    </div>
+    
+      <div id="textbox"> </div>
+    
+    
+    <div id="input">
+      <button id="rock-user2" class="user2" name="rock">Rock</button>
+      <button id="paper-user2" class="user2" name="paper">Paper</button>
+      <button id="scissor-user2" class="user2" name="scissor">scissors</button>
+      <form>
+             <input id="text" user="user2" type="text" placeholder="say something.">
+            <input id="submit-user2" value="Send" type="submit">
+        </form>
+    </div>
+    
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
+
+  <!-- ================================================================================== -->
+  <script type="text/javascript" 
+          src="game.js"> </script>
+
+</body>
+
+</html>
+
+<!-- 
+      var database = firebase.database();
+    var clickCounter = 0;
+
+ 
+// $("#click-button").on("click", function() {
+  //   clickCounter++;
+
+  //   database.ref().set({
+  //     clickCount: clickCounter
+  //   });
+  // });
+
+  // // MAIN PROCESS + INITIAL CODE
+  // // --------------------------------------------------------------------------------
+
+  // database.ref().on("value", function(snapshot) {
+  //   console.log(snapshot.val());
+
+  //   clickCounter = snapshot.val().clickCount;
+
+  //   $("#click-value").text(snapshot.val().clickCount);
+  // }, function(errorObject) {
+  //   console.log("The read failed: " + errorObject.code);
+  // }); -->
