@@ -13,26 +13,71 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 
-
     var database = firebase.database();
+
+    var RPSresult1="N/A";
+    var RPSresult2="N/A"
+    var user1win=0;
+    var user1lose=0;
+    var user2win=0;
+    var user2lose=0;
   //  USER1-----------------------------------------
 // RPC 
+function result(){
+  $("#win-user1").text(user1win);
+  $("#lose-user1").text(user1lose);
+  $("#win-user2").text(user2win);
+  $("#lose-user2").text(user2lose);
+}
+result();
+
+function condition(){
+  if((RPSresult1== "rock" && RPSresult2==="scissor")||(RPSresult1=== "scissor" && RPSresult2==="paper")||(RPSresult1=== "paper" && RPSresult2==="rock")){
+    user1win ++;
+    user2lose++;
+    result();
+    RPSresult1=== "N/A";
+    RPSresult2==="N/A";
+    database.ref().remove();
+  }else if((RPSresult1== "scissor" && RPSresult2==="rock")||(RPSresult1=== "rock" && RPSresult2==="paper")||(RPSresult1=== "paper" && RPSresult2==="scissor")){
+  user2win ++;
+  user1lose++;
+  result();
+  RPSresult1=== "N/A";
+  RPSresult2==="N/A";
+  database.ref().remove();
+  }else if((RPSresult1=== "scissor" && RPSresult2==="scissor")||(RPSresult1=== "rock" && RPSresult2==="rock")||(RPSresult1=== "paper" && RPSresult2==="paper")){
+  RPSresult1=== "N/A";
+  RPSresult2==="N/A";
+  database.ref().remove();
+  }
+};
+
   $(".user1").on("click", function() {
-    var name=$(this).attr("name");
 // create the text input
 // for RPC
-    var textInput=$("<div>");
-        textInput.text("you choose a "+ name)
-                 .attr("class",".your-text");               
-        $("#textbox").append(textInput);
-
-
         var user1Chosen=$(this).attr("id");  
-        var choiceOf1=user1Chosen;
-// store into data
-    database.ref().set({
-      user1Choice: choiceOf1
-    });
+        RPSresult1=user1Chosen;
+        var textInput=$("<div>");
+        textInput.text("you choose a "+ RPSresult1)
+                 .attr("class","your-text");
+        $("#textboxUser1").append(textInput);
+
+       database.ref().on("value",function(snapshot){
+          if (snapshot.child("user2Choice").exists()){
+            RPSresult2=snapshot.val().user2Choice;
+          }
+       });  
+
+       condition();
+  
+       database.ref().set({
+        user1Choice:user1Chosen
+     });     
+
+     console.log(RPSresult1);
+     console.log(RPSresult2); 
+
   });
 // text input
 $("#submit-user1").on("click",function(){
@@ -40,8 +85,8 @@ $("#submit-user1").on("click",function(){
     var whatYouTyped=$("#text").val().trim();
     var textInput=$("<div>");
         textInput.text("you: "+whatYouTyped)
-                 .attr("class",".your-text");               
-        $("#textbox").append(textInput);
+                 .attr("class","your-text");               
+        $("#textboxUser1").append(textInput);
         $("#text").val(" ");
 // store into database
         database.ref().set({
@@ -51,20 +96,30 @@ $("#submit-user1").on("click",function(){
 
   //  USER2-----------------------------------------
   $(".user2").on("click", function() {
-    var name=$(this).attr("name");
-
+    var user2Chosen=$(this).attr("id");  
+    RPSresult2=user2Chosen;
     var textInput=$("<div>");
-        textInput.text("you choose a "+ name)
-                 .attr("class",".your-text");
-        $("#textbox").append(textInput);
+        textInput.text("you choose a "+ RPSresult2)
+                 .attr("class","your-text");
+        $("#textboxUser2").append(textInput);
 
+         database.ref().on("value",function(snapshot){
+          // if user2Text exists push it as them to user 1, nothing as user2
+          // if user2 speaks
+          if (snapshot.child("user1Choice").exists()){
+            
+            RPSresult1=snapshot.val().user1Choice;
+          }
+         });
 
-        var user2Chosen=$(this).attr("id");  
-        var choiceOf2=user2Chosen;
+         condition();
+       
+         database.ref().set({
+          user2Choice:user2Chosen
+          });
+          console.log(RPSresult1);
+          console.log(RPSresult2); 
 
-    database.ref().set({
-      user2Choice: choiceOf2
-    });
   });
 
   // text input
@@ -73,8 +128,8 @@ $("#submit-user2").on("click",function(){
    var whatYouTyped=$("#text").val().trim();
    var textInput=$("<div>");
        textInput.text("you: "+whatYouTyped)
-                .attr("class",".your-text");               
-       $("#textbox").append(textInput);
+                .attr("class","your-text");               
+       $("#textboxUser2").append(textInput);
        $("#text").val(" ");
 // store into database
        database.ref().set({
@@ -86,30 +141,36 @@ $("#submit-user2").on("click",function(){
 
 // 1&2 interaction-------------------------------------------
 
+// print the result to screen
+
+
+
+
 // user 1 text from database
 database.ref().on("value",function(snapshot){
+  // if user2Text exists push it as them to user 1, nothing as user2
+  // if user2 speaks
+  if (snapshot.child("user2Text").exists()){
 
-    var whatUser2Say=snapshot.val().user2Text
-    if(whatUser2Say!=="undefined"){
+
+    var whatUser2Say=snapshot.val().user2Text;
+    
           var theOtherText=$("<div>");
           theOtherText.attr("class","theOtherText")
-                     .text("Them: "+ whatUser2Say);
-      $("#textbox").append(theOtherText); 
-    }else{
-      $("#textbox").append("'please make valid input'"); 
+                     .text( whatUser2Say +" :Them");
+      $("#textboxUser1").append(theOtherText); 
+
+    }else if(snapshot.child("user1Text").exists()){
+      var whatUser1Say=snapshot.val().user1Text;
+    
+      var theOtherText=$("<div>");
+      theOtherText.attr("class","theOtherText")
+                 .text( whatUser1Say + " :Them");
+        $("#textboxUser2").append(theOtherText);         
     }
+    
+   // RPS thing-=---------------------------------------
+  
               
-})
 
-  // // MAIN PROCESS + INITIAL CODE
-  // // --------------------------------------------------------------------------------
-
-  // database.ref().on("value", function(snapshot) {
-  //   console.log(snapshot.val());
-
-  //   clickCounter = snapshot.val().clickCount;
-
-  //   $("#click-value").text(snapshot.val().clickCount);
-  // }, function(errorObject) {
-  //   console.log("The read failed: " + errorObject.code);
-  // }); ------->
+});

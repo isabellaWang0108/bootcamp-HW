@@ -1,7 +1,7 @@
 body{
     background-color: black;
 }
-#input{
+#inputUser1, #inputUser2{
     margin:10px 0px 0px 30px;
 }
 button, #submit{
@@ -42,7 +42,7 @@ form{
     top:10px;
     left:40%;
 }
-#textbox{
+#textboxUser1, #textboxUser2{
     border: none;
     color:white;
     height:240px;
@@ -85,5 +85,19 @@ form{
 }
 .your-text{
     color:white;
+    text-align: left;
+    margin:10px 10px 10px 10px;
+    padding:10px 10px 10px 10px;
+    border:solid;
+    border-width: 1px;
+}
+.theOtherText{
+    color:white;
+    text-align: right;
+    margin:10px 10px 10px 10px;
+    padding:10px 10px 10px 10px;
+    border:solid;
+    border-width: 1px;
+    
     
 }
