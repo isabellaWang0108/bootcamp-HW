@@ -38,18 +38,15 @@ function condition(){
     result();
     RPSresult1=== "N/A";
     RPSresult2==="N/A";
-    database.ref().remove();
   }else if((RPSresult1== "scissor" && RPSresult2==="rock")||(RPSresult1=== "rock" && RPSresult2==="paper")||(RPSresult1=== "paper" && RPSresult2==="scissor")){
   user2win ++;
   user1lose++;
   result();
   RPSresult1=== "N/A";
   RPSresult2==="N/A";
-  database.ref().remove();
   }else if((RPSresult1=== "scissor" && RPSresult2==="scissor")||(RPSresult1=== "rock" && RPSresult2==="rock")||(RPSresult1=== "paper" && RPSresult2==="paper")){
   RPSresult1=== "N/A";
   RPSresult2==="N/A";
-  database.ref().remove();
   }
 };
 
@@ -71,7 +68,7 @@ function condition(){
 
        condition();
   
-       database.ref().set({
+       database.ref("/choice1").set({
         user1Choice:user1Chosen
      });     
 
@@ -114,7 +111,7 @@ $("#submit-user1").on("click",function(){
 
          condition();
        
-         database.ref().set({
+         database.ref("/choice2").set({
           user2Choice:user2Chosen
           });
           console.log(RPSresult1);
